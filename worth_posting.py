@@ -1,6 +1,7 @@
 # from dataIO import fileIO
 from globalv import data_json
 
+
 class WorthPosting:
     def __init__(self, r):
         self.result = r

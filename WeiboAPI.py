@@ -1,5 +1,17 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
+import re
+import json
+
+import urllib.request
+import urllib.error
+import urllib.parse
+import urllib3
+import http.cookiejar
+import base64
+# encrypt
+import rsa
+import binascii
 """
 Note: This file originated by huan zhan
 for getting code from weibo without web,
@@ -17,16 +29,6 @@ WeiboAPI.py
 @version: $1.0$
 # 微博API接口
 """
-
-import sys
-# import imp
-#
-# imp.reload(sys)
-# sys.setdefaultencoding("utf8")
-
-import  re, json
-import urllib.request, urllib.error, urllib.parse, urllib3, http.cookiejar
-import base64, rsa, binascii  # encrypt
 
 
 class SmartRedirectHandler(urllib.request.HTTPRedirectHandler):

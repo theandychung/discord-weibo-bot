@@ -1,4 +1,3 @@
-from dataIO import fileIO
 from weibopy import WeiboOauth2, WeiboClient
 from WeiboAPI import SinaAPI
 from globalv import data_json
