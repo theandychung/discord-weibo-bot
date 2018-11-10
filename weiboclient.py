@@ -7,10 +7,13 @@ from globalv import data_json
 class Client:
     def __init__(self):
         self.client = None
+        self.expires_in = ""
+        self.access_token = ""
+        self.oauth = None
 
     def get_new_token(self):
         """
-        obtain new access token
+        obtain new access token or renew token
         :return: token information package
         example:
         {
@@ -23,10 +26,10 @@ class Client:
 
         """
         """step 1: Get code"""
-        Oauth = WeiboOauth2(data_json["Weibo"]["APP_KEY"],
+        self.oauth = WeiboOauth2(data_json["Weibo"]["APP_KEY"],
                             data_json["Weibo"]["APP_SECRET"],
                             data_json["Weibo"]["REDIRECT_URL"])
-        authorize_url = Oauth.authorize_url
+        authorize_url = self.oauth.authorize_url
         # print(authorize_url)
         # import webbrowser
         # webbrowser.open_new(authorize_url)
@@ -38,25 +41,22 @@ class Client:
         code = API.get_code_Security()  # get code from callback url
         """step 2: use code to get access token"""
         # print(Oauth.auth_access("bf77dfb8fc0339a77ff4fe30bea24cd4"))
-        tokenInfo = Oauth.auth_access(code)  # get access token
-        data_json["Weibo"]["ACCESS_TOKEN"] = tokenInfo["access_token"] #save token to json
-        # data["Weibo"]["EXPIRED_IN"] = auth["expired in"]
-        print("new token: " + tokenInfo["access_token"])
-        fileIO("data.json", "save", data_json)
+        tokenInfo = self.oauth.auth_access(code)  # get access token
+        data_json["Weibo"]["ACCESS_TOKEN"] = tokenInfo["access_token"] # save token
+        data_json["Weibo"]["EXPIRES_IN"] = tokenInfo["expires_in"] # save token expired in
+        self.expires_in = tokenInfo["expires_in"]
+        # fileIO("data.json", "save", data_json)
         return tokenInfo
 
     def set_client(self):
-        self.client = WeiboClient(data_json["Weibo"]["ACCESS_TOKEN"])
+        if self._token_valid():
+            self.client = WeiboClient(data_json["Weibo"]["ACCESS_TOKEN"])
 
     def get_weibo_package(self, api):
         """
         input weibo api commands
         example:
-            a = config()
-            a.set_client()
             result = a.do_something("statuses/home_timeline")
-            for st in result["statuses"]:
-                print(st['text'])
         :param api: api
         :return:
         """
@@ -65,10 +65,25 @@ class Client:
             result = self.client.get(suffix=api + ".json")
         return result
 
+    def token_expire_date(self):
+        if self._token_valid():
+            t = self.oauth.get_token_info(data_json["Weibo"]["ACCESS_TOKEN"])
+            return t["expire_in"]
+
+    def _token_valid(self):
+        if data_json["Weibo"]["ACCESS_TOKEN"] != "":
+            return True
+        else:
+            ValueError("ACCESS_TOKEN IS EMPTY")
+            return False
+
 
 if __name__ == "__main__":
     a = Client()
-    # a.get_new_token()
+    a.get_new_token()
     a.set_client()
-    result = a.get_weibo_package("statuses/home_timeline")
-    print(result["statuses"][0]['text'])
+    import time
+    time.sleep(5)
+    a.token_expire_date()
+    # result = a.get_weibo_package("statuses/home_timeline")
+    # print(result["statuses"][0]['text'])
