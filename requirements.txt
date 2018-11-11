@@ -1,0 +1,5 @@
+pip
+requests
+rsa
+urllib3
+weibopy
