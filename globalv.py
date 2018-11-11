@@ -10,6 +10,7 @@ else:
         },
         "Weibo": {
             "ACCESS_TOKEN": os.environ["ACCESS_TOKEN"],
+            "EXPIRES_IN": os.environ["EXPIRES_IN"],
             "APP_KEY": os.environ["APP_KEY"],
             "APP_SECRET": os.environ["APP_SECRET"],
             "LAST_WEIBO_ID": os.environ["LAST_WEIBO_ID"],

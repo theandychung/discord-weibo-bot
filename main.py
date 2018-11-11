@@ -5,7 +5,7 @@ import time
 
 
 a = Client()
-# a.get_new_token()
+a.get_new_token()
 a.set_client()
 
 while True:
@@ -15,8 +15,8 @@ while True:
     if b.worthy() is True:
         embed = Weibo2DiscordWebhook(result["statuses"][0])  # convert to discord file
         embed.post()  # post to discord
-    time.sleep(25)  # limit rate of fetching from weibo = 150/hr
-    """
-    todo: renew token if it is about to expire
-    """
+        time.sleep(25)  # limit rate of fetching from weibo = 150/hr
+        """
+        todo: renew token if it is about to expire
+        """
 
