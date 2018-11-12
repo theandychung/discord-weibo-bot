@@ -1,10 +1,16 @@
 # from dataIO import fileIO
 from globalv import data_json
 
+"""
+This file is to check if the weibo post is worth transferring to discord.
+"""
+
 
 class WorthPosting:
     def __init__(self, r):
         self.result = r
+        if "LAST_WEIBO_ID" not in data_json["Weibo"]:
+            data_json["Weibo"]["LAST_WEIBO_ID"] = ""
 
     def is_it_new_post(self, idstr):
         """
@@ -29,6 +35,7 @@ class WorthPosting:
         return False
 
     def more(self):
+        """ maybe add more in the future """
         pass
 
     def worthy(self):

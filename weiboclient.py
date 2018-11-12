@@ -7,7 +7,7 @@ class Client:
     def __init__(self):
         self.client = None
         self.expires_in = ""
-        self.access_token = ""
+        self.access_token = data_json["Weibo"]["ACCESS_TOKEN"]
         self.oauth = None
 
     def get_new_token(self):
@@ -47,9 +47,17 @@ class Client:
         # fileIO("data.json", "save", data_json)
         return tokenInfo
 
+    def revoke_token(self):
+        """delete access token in weibo server"""
+        if self._token_not_empty() and self.oauth is not None:
+            self.oauth.revoke_auth_access(self.access_token)
+            self.access_token = ""
+
     def set_client(self):
-        if self._token_valid():
+        if self._token_not_empty():
             self.client = WeiboClient(data_json["Weibo"]["ACCESS_TOKEN"])
+        else:
+            raise ValueError("access token cannot be empty")
 
     def get_weibo_package(self, api):
         """
@@ -65,11 +73,12 @@ class Client:
         return result
 
     def token_expire_date(self):
-        if self._token_valid():
+        if self._token_not_empty():
             t = self.oauth.get_token_info(data_json["Weibo"]["ACCESS_TOKEN"])
             return t["expire_in"]
 
-    def _token_valid(self):
+    def _token_not_empty(self):
+        """make sure token is not empty"""
         if data_json["Weibo"]["ACCESS_TOKEN"] != "":
             return True
         else:
@@ -81,8 +90,6 @@ if __name__ == "__main__":
     a = Client()
     a.get_new_token()
     a.set_client()
-    import time
-    time.sleep(5)
     a.token_expire_date()
-    # result = a.get_weibo_package("statuses/home_timeline")
-    # print(result["statuses"][0]['text'])
+    result = a.get_weibo_package("statuses/home_timeline")
+    print(result["statuses"][0]['text'])
