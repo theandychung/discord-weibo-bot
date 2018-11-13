@@ -3,6 +3,7 @@
 import re
 import json
 
+import certifi
 import urllib.request
 import urllib.error
 import urllib.parse
@@ -73,7 +74,8 @@ class SinaAPI():
         self.REDIRECT_URL = REDIRECT_URL
         self.USER_ID = USER_ID
         self.USER_PSWD = USER_PSWD
-        self.http = urllib3.PoolManager()
+        self.http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',
+                                        ca_certs=certifi.where())
 
     def get_username(self, USER_ID):
         # The Encryption Algorithm of username

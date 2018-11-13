@@ -10,7 +10,7 @@ tokenInfo = c.get_new_token()
 print("New access token: " + tokenInfo["access_token"])
 print("New access token expires in: " + str(tokenInfo["expires_in"]) + " sec.")
 c.set_client()
-
+# result = c.get_weibo_package("account/rate_limit_status")
 while True:
     print("token expires in: " + str(c.token_expire_date()) + " sec")
     # todo: renew token if it is about to expire

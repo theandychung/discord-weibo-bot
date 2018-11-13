@@ -18,7 +18,7 @@ setup(
     install_requires=[
         'requests',
         'rsa',
-        'urllib3',
+        'urllib3[secure]',
         'weibopy'
     ],
     include_package_data=True,

@@ -2,4 +2,5 @@ pip
 requests
 rsa
 urllib3
+certifi
 weibopy
