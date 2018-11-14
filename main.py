@@ -24,10 +24,10 @@ while True:
         break
 
     result = c.get_weibo_package("statuses/home_timeline")  # fetch posts
-    # b = WorthPosting(result["statuses"][0])  # check worthy to post
-    # if b.worthy() is True:
-    #     embed = Weibo2DiscordWebhook(result["statuses"][0])  # convert to discord file
-    #     embed.post()  # post to discord
-    #
+    b = WorthPosting(result["statuses"][0])  # check worthy to post
+    if b.worthy() is True:
+        embed = Weibo2DiscordWebhook(result["statuses"][0])  # convert to discord file
+        embed.post()  # post to discord
+
     time.sleep(200)  # limit rate of fetching from weibo = 150/hr, min=24? sec/ping
 
