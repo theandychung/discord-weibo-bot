@@ -61,9 +61,12 @@ class Client:
 
     def get_weibo_package(self, api):
         """
-        input weibo api commands
+        input weibo api commands.
+        api commands can be obtained from:
+        http://open.weibo.com/wiki/API%E6%96%87%E6%A1%A3/en#Timeline_API
+
         example:
-            result = a.do_something("statuses/home_timeline")
+            result = a.get_weibo_package("statuses/home_timeline")
         :param api: api
         :return:
         """
@@ -91,5 +94,6 @@ if __name__ == "__main__":
     a.get_new_token()
     a.set_client()
     a.token_expire_date()
-    result = a.get_weibo_package("statuses/home_timeline")
-    print(result["statuses"][0]['text'])
+    # result = a.get_weibo_package("statuses/home_timeline")
+    result = a.get_weibo_package("account/rate_limit_status")
+    print(result)
