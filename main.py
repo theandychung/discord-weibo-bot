@@ -12,13 +12,14 @@ print("New access token expires in: " + str(tokenInfo["expires_in"]) + " sec.")
 c.set_client()
 
 while True:
-    print("token expires in: " + str(c.token_expire_date()) + " sec")
+    # print("token expires in: " + str(c.token_expire_date()) + " sec")
     # todo: renew token if it is about to expire
 
     # check fetching limits
     lim = c.get_weibo_package("account/rate_limit_status")
+    print("remaining ip hits: " + str(lim["remaining_ip_hits"]))
+
     if lim["remaining_ip_hits"] <= 1:
-        print("remaining ip hits: " + str(lim["remaining_ip_hits"]))
         print("continue after " + str(lim["reset_time_in_seconds"]) + " seconds")
         time.sleep(lim["reset_time_in_seconds"])
         break
