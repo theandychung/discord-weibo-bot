@@ -41,7 +41,7 @@ while True:
                 # hook.post()
             break
     count = count + 1
-    print(count)
+    print(count)d
     time.sleep(200)
 
 
