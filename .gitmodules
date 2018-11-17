@@ -1,0 +1,3 @@
+[submodule "weibo-api"]
+	path = weibo-api
+	url = https://github.com/theandychung/weibo-api.git
