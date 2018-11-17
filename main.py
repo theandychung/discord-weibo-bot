@@ -1,6 +1,6 @@
 from discord_hooks import Webhook
 from globalv import data_json
-from weibo_api.client import WeiboClient
+from weibo_api.weibo_api.client import WeiboClient
 
 import html2text
 h = html2text.HTML2Text()
@@ -43,7 +43,9 @@ while True:
                 data_json["Weibo"]["LAST_WEIBO_ID"] = status.id
                 # hook.post()
             break
-    print("=====================================")
+    count = count +1
+    print(count)
+    time.sleep(200)
 
 
 
