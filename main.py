@@ -1,7 +1,7 @@
 from discord_hooks import Webhook
 from globalv import data_json
 from weibo_api.weibo_api.client import WeiboClient
-
+import time
 import html2text
 h = html2text.HTML2Text()
 h.ignore_links = True
@@ -15,35 +15,32 @@ hook = Webhook(url, content="test3",
                avatar=p.avatar)
 
 
-def filter(content):
-    try:
-        filtered_text, _ = content.split("\n活动详情请阅")
+def convert_content(htmlcontent):
+    markdown_content = h.handle(htmlcontent)
 
-    except:
-        filtered_text = content
-    return filtered_text
+    try:
+        content, _ = markdown_content.split("\n活动详情请阅")
+    except ValueError:
+        content = markdown_content
+    return content
+
+
 data_json["Weibo"]["LAST_WEIBO_ID"] = ""
 count = 0
 while True:
-    for status in p.statuses.page(1):
-        # iddd=data_json["Weibo"]["LAST_WEIBO_ID"]
-        # if status.id != data_json["Weibo"]["LAST_WEIBO_ID"]:
-        #     print("here")
-        #     aaa = status.id
-        #     bbb= data_json["Weibo"]["LAST_WEIBO_ID"]
 
+    """fetch without username/passwords"""
+    for status in p.statuses.page(1):
         if status.isTop is None:
             if status.id != data_json["Weibo"]["LAST_WEIBO_ID"]:
-                print(status.id)
-                str = filter(h.handle(status.longTextContent))
-                hook.set_content(str)
+                hook.set_content(convert_content(status.longTextContent))
                 if status.original_pic is not None:
                     hook.set_image(status.original_pic)
                 hook.set_footer(text=u"发布时间：{}".format(status.created_at))
                 data_json["Weibo"]["LAST_WEIBO_ID"] = status.id
                 # hook.post()
             break
-    count = count +1
+    count = count + 1
     print(count)
     time.sleep(200)
 
