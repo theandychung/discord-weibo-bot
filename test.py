@@ -1,63 +1,71 @@
+#!coding=utf-8
+import requests
 import re
-STR1 = """
-
-11月12日14时维护开启后，《Fate/Grand Order》（中文名：命运-
-冠位指定）的bili安卓和IOS平台将更新为1.36.2版本(安卓联运渠道由于提审状况不同，上架进度可能会有所不同)，本次更新为非强制更新，玩家届时可在
-哔哩哔哩手机客户端/app store 中查询确认新版本信息，并可自行选择是否进行更新（如此前已关闭『自动更新』功能）。  
-  
-本次版本更新内容：  
-1.技能强化UI修正  
-2.友情召唤界面汉化修正  
-3.助战选择界面灵基再临阶段显示修正  
-4.强化界面中“极大成功”的UI修正
+import pandas as pd
 
 
-微博内容:【限时】「复刻：超极☆大南瓜村 ～踏上冒险之旅 轻量版」即将开启！  
-  
-◆活动时间◆  
-2018年11月12日 维护后 ～ 11月26日 13：59  
-  
-在南瓜村与勇者伊丽莎白一起冒险的御主，  
-在到达城堡后，将会有什么等待着他们呢……？  
-  
-通关本次活动的主线关卡后，即可获得活动限定★4(SR)从者「伊丽莎白•巴托里〔勇者〕」！  
-  
-「复刻 2017万圣节推荐召唤（每日替换）」卡池限时开启！  
-  
-◆活动时间◆  
-2018年11月12日 维护后 ～ 11月26日 13:59  
-  
-从者「★5(SSR) 克娄巴特拉」限时登场！  
-  
-本次卡池中，「★5(SSR) 克娄巴特拉」与「★3(R) 罗宾汉」全程出现概率提升！此外，本次活动中的活跃从者「★4(SR)
-弗拉德三世〔EXTRA〕」「★4(SR) 尼托克丽丝（Caster）」「★4(SR) 茨木童子」将以每日替换的形式进行推荐召唤！  
-  
-活动详情请阅
-![](https://h5.sinaimg.cn/upload/2015/09/25/3/timeline_card_small_web_default.png)网页链接
-"""
-STR2="""
-微博内容:亲爱的御主，自2016年9月29日至今，我们的圣杯探索之旅已满2周年。2年中并肩作战、守护人理的荣光，汇聚成这段值得感谢的旅程。迦勒底的宴会已经开启，梦与希望的旅途还将继续！希望今后还能与您一同书写这充满相遇与离别，欢笑与泪水，绝境与希望的故事，直至——那遥远不远的约定之所。为御主们献上来自武内崇先生的贺图，感谢大家两年来的陪伴！=w=！今后也请多多支持《FGO》！#FGO2周年#
+def get_proxy():
+    """
+    获取代理
+    """
+    # 获取xicidaili的高匿代理
+    ##proxy_info_list = []  # 抓取到的ip列表
+    ip_list = []
+    dk_list = []
+    xy_list = []
+    ip_list1 = []
+    dk_list1 = []
+    xy_list1 = []
+    for page in range(1, 2):  # 抓几页
+        headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+                   'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6',
+                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'}
+
+        request = requests.get('http://www.xicidaili.com/nn/%d' % page, headers=headers, verify=False)
+        r = request.text
+
+        ip_page = re.findall(r'<td>(.*?)</td>', r)
+        # print (ip_page)
+
+        for i in range(0, len(ip_page), 5):
+            ip_list.append(ip_page[i])
+            dk_list.append(ip_page[i + 1])
+            xy_list.append(ip_page[i + 2])
+
+    # 随机选择
+    # ran=random.randint(1, len(ip_list))
+    # ip=ip_list[ran]+':'+dk_list[ran]
+    # xy=str(xy_list[ran]).lower()
+
+    # print (xy + ip)
+
+    """
+      # 验证代理的可用性
+    """
+
+    for i in range(0, len(ip_list)):  #
+        if xy_list[i] == 'HTTP':
+            try:
+                proxies = {'http': ip_list[i] + ':' + dk_list[i]}  # http 一定要小写
+                url = 'http://checkip.amazonaws.com/'
+                testip = requests.get(url=url, proxies=proxies, headers=headers, timeout=3, verify=False)
+                regetip = testip.text.strip()
+
+                if regetip == ip_list[i]:
+                    ip_list1.append(ip_list[i])
+                    dk_list1.append(dk_list[i])
+                    xy_list1.append(xy_list[i])
+            except:
+                print(i)
+    df = pd.DataFrame()
+    df.loc[:, 'xy'] = xy_list1
+    df.loc[:, "ip"] = ip_list1
+    df.loc[:, 'dk'] = dk_list1
+
+    df.to_csv(r'E:\daili.csv', index=False, encoding="GB18030")
+    print(df)
+    return df
 
 
-微博内容:亲爱的各位玩家：  
-  
-11月12日14时维护开启后，《Fate/Grand Order》（中文名：命运-
-冠位指定）的bili安卓和IOS平台将更新为1.36.2版本(安卓联运渠道由于提审状况不同，上架进度可能会有所不同)，本次更新为非强制更新，玩家届时可在
-哔哩哔哩手机客户端/app store 中查询确认新版本信息，并可自行选择是否进行更新（如此前已关闭『自动更新』功能）。  
-  
-本次版本更新内容：  
-1.技能强化UI修正  
-2.友情召唤界面汉化修正  
-3.助战选择界面灵基再临阶段显示修正  
-4.强化界面中“极大成功”的UI修正
-"""
+get_proxy()
 
-try:
-    str1, str2 = STR2.split("\n活动详情请阅")
-
-except:
-    str1 = STR2
-
-
-print(str1)
-print("===")
