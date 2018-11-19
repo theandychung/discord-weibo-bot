@@ -3,4 +3,4 @@ requests
 rsa
 urllib3
 certifi
-weibopy
+html2text
