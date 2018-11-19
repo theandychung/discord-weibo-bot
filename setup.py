@@ -19,7 +19,8 @@ setup(
         'requests',
         'rsa',
         'urllib3[secure]',
-        'html2text'
+        'html2text',
+        'weibopy'
     ],
     include_package_data=True,
     zip_safe=False,
