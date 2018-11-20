@@ -6,11 +6,14 @@ import html2text
 from my_weibo_api.weiboclient import Client
 # from my_weibo_api.worth_posting import WorthPosting
 from my_weibo_api.weibo2discordwebhook import Weibo2DiscordWebhook
-
+import re
 
 # init
 count = 0
 sleep_time = 200
+
+pass_loopA = True
+looping = True
 
 
 def worth(post_id): # check worthy to post
@@ -24,6 +27,8 @@ def worth(post_id): # check worthy to post
 while True:
 
     try:
+        if pass_loopA is True:
+            raise Exception
         print("fetching with username/passwords")
         # if username is not found, raise to goto loop B
         if "USERNAME" not in data_json["Weibo"]:
@@ -54,12 +59,14 @@ while True:
         # loop B: fetch without username/passwords
 
         def convert_content(html_content):
+            if 'http' in html_content:
+                html_content = re.sub(r'(.*)(<br\s*/>.*)(<br\s*/>.*)', r'\1\n', html_content)
             markdown_content = h.handle(html_content)
-
             try:
                 content, _ = markdown_content.split("\n活动详情请阅")
             except ValueError:
                 content = markdown_content
+            print(markdown_content)
             return content
 
         client = WeiboClient()
@@ -69,7 +76,7 @@ while True:
         hook = Webhook(data_json["Discord"]["WEBHOOK_URL"], content="test3",
                        username=str(p.name),
                        avatar=p.avatar)
-        # While True:
+
         for status in p.statuses.page(1):
             if status.isTop is None:
                 if worth(status.id):
@@ -80,6 +87,10 @@ while True:
                     data_json["Weibo"]["LAST_WEIBO_ID"] = status.id
                     hook.post()
                 break
-        count = count + 1
-        print(count)
-        time.sleep(sleep_time)
+
+        if looping is False:
+            break
+        else:
+            count = count + 1
+            print(count)
+            time.sleep(sleep_time)
