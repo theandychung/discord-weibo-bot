@@ -10,7 +10,7 @@ import re
 
 # init
 count = 0
-sleep_time = 200
+sleep_time = 2
 
 pass_loopA = True
 looping = True
@@ -62,12 +62,8 @@ while True:
             if 'http' in html_content:
                 html_content = re.sub(r'(.*)(<br\s*/>.*)(<br\s*/>.*)', r'\1\n', html_content)
             markdown_content = h.handle(html_content)
-            try:
-                content, _ = markdown_content.split("\n活动详情请阅")
-            except ValueError:
-                content = markdown_content
-            # print(markdown_content)
-            return content
+            print(markdown_content)
+            return markdown_content
 
         client = WeiboClient()
         h = html2text.HTML2Text()
@@ -80,17 +76,18 @@ while True:
         for status in p.statuses.page(1):
             if status.isTop is None:
                 if worth(status.id):
-                    hook.set_content(convert_content(status.longTextContent))
-                    if status.original_pic is not None:
-                        hook.set_image(status.original_pic)
-                    hook.set_footer(text=u"发布时间：{}".format(status.created_at))
                     data_json["Weibo"]["LAST_WEIBO_ID"] = status.id
-                    hook.post()
+                    if count > 0:
+                        hook.set_content(convert_content(status.longTextContent))
+                        if status.original_pic is not None:
+                            hook.set_image(status.original_pic)
+                        hook.set_footer(text=u"发布时间：{}".format(status.created_at))
+                        hook.post()
                 break
 
         if looping is False:
             break
         else:
-            count = count + 1
             print(count)
+            count = count + 1
             time.sleep(sleep_time)
