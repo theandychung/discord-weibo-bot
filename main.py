@@ -66,7 +66,7 @@ while True:
                 content, _ = markdown_content.split("\n活动详情请阅")
             except ValueError:
                 content = markdown_content
-            print(markdown_content)
+            # print(markdown_content)
             return content
 
         client = WeiboClient()
