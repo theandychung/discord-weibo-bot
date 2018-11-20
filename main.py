@@ -52,6 +52,7 @@ while True:
     except Exception:
         print("fetching without username/passwords")
         # loop B: fetch without username/passwords
+
         def convert_content(html_content):
             markdown_content = h.handle(html_content)
 
