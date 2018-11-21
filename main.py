@@ -29,7 +29,7 @@ while True:
     try:
         if pass_loopA is True:
             raise Exception
-        print("fetching with username/passwords")
+        # print("fetching with username/passwords")
         # if username is not found, raise to goto loop B
         if "USERNAME" not in data_json["Weibo"]:
             raise Exception
@@ -55,7 +55,7 @@ while True:
         time.sleep(sleep_time)  # limit rate of fetching from weibo = 150/hr, min=24? sec/ping
 
     except Exception:
-        print("fetching without username/passwords")
+        # print("fetching without username/passwords")
         # loop B: fetch without username/passwords
 
         def convert_content(html_content):
@@ -88,6 +88,6 @@ while True:
         if looping is False:
             break
         else:
-            print(count)
+            # print(count)
             None if count is 0 else time.sleep(sleep_time)  # init loop no sleep
             count = count + 1
