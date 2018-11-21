@@ -16,14 +16,11 @@
     "ACCESS_TOKEN": {
       "description": "Weibo access token"
     },
-    "RAILS_ENV": "production",
-    "COOKIE_SECRET": {
-            "description": "This gets generated",
-            "generator": "secret"
+    "APP_KEY": {
+      "description": "Weibo app key"
     },
-    "SETUP_BY": {
-            "description": "Who initiated this setup",
-            "value": ""
+    "APP_SECRET": {
+      "description":  "Weibo app secret"
     }
   }
 }
