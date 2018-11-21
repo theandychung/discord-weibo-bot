@@ -1,13 +1,18 @@
 {
   "name": "Discord Weibo Bot",
   "description": "Post Weibo posts to Discord through Webhook",
-  "website": "http://rubyonrails.org",
+  "website": "https://nntin.github.io/discord-logo/",
+  "success_url": "/welcome",
   "env": {
     "WEBHOOK_URL": {
       "description": "Discord webhook URL https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks"
     },
     "ACCESS_TOKEN": {
       "description": "Weibo access token"
+    },
+    "EXPIRES_IN": {
+      "description": "Weibo access token expiration count down in sec",
+      "required": false
     },
     "APP_KEY": {
       "description": "Weibo app key"
