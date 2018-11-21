@@ -23,13 +23,13 @@
       "description":  "Weibo app secret"
     },
     "PASSWORDS": {
-      "description": "Weibo user log in passwords",
+      "description": "Weibo user log in passwords"
     },
     "REDIRECT_URL": {
-      "description": "Redirect URL",
+      "description": "Redirect URL"
     },
     "USERNAME": {
-      "description": "Weibo user's username",
+      "description": "Weibo user's username"
     }
   }
 }
