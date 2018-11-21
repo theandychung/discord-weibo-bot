@@ -21,15 +21,23 @@
     },
     "4.REDIRECT_URL": {
       "description": "Redirect URL",
-      "value": "here"
+      "value": "http://api.weibo.com/oauth2/default.html"
     },
-    "5.USERNAME": {
+    "5.Weibo ID":{
+      "description": "The ID of Weibo user(s) you want to track with bot"
+    },
+    "6.USERNAME": {
       "description": "Weibo user's username",
       "required": false
     },
-    "6.PASSWORDS": {
+    "7.PASSWORDS": {
       "description": "Weibo user log in passwords",
       "required": false
     }
-  }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/dmathieu/heroku-buildpack-submodules"
+    }
+  ]
 }

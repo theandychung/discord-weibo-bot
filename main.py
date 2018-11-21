@@ -12,8 +12,8 @@ import re
 count = 0
 sleep_time = 200
 
-pass_loopA = True
-looping = True
+pass_loopA = False
+looping = False
 
 
 def worth(post_id): # check worthy to post
@@ -35,7 +35,7 @@ while True:
             raise Exception
         # Loop A: fetch with username/passwords
         c = Client()
-        c.revoke_token()
+        # c.revoke_token()
         c.get_token()
         c.set_client()
 
@@ -68,6 +68,7 @@ while True:
         client = WeiboClient()
         h = html2text.HTML2Text()
         h.ignore_links = True
+        # todo: check if id exists
         p = client.people('5732523783')
         hook = Webhook(data_json["Discord"]["WEBHOOK_URL"], content="test3",
                        username=str(p.name),
