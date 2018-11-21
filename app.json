@@ -1,18 +1,25 @@
 {
   "name": "Discord Weibo Bot",
   "description": "Post Weibo posts to Discord through Webhook",
-  "website": "http://rubyonrails.org",
-  "success_url": "/welcome",
-  "addons": ["heroku-postgresql:hobby-dev", "papertrail"],
+  "website": "https://github.com/theandychung/discord-weibo-bot",
+  "repository": "https://github.com/theandychung/discord-weibo-bot",
+  "logo": "https://i.imgur.com/11zvdoc.png",
+  "keywords": [
+      "discord",
+      "weibo",
+      "webhook"
+  ],
   "env": {
-    "WEBHOOK_URL": {
-      "description": "Discord webhook URL"
+    "BUILDPACK_URL": "https://github.com/dmathieu/heroku-buildpack-submodules",
+    "RAILS_ENV": "production",
+    "COOKIE_SECRET": {
+            "description": "This gets generated",
+            "generator": "secret"
     },
-    "ACCESS_TOKEN": {
-      "description": "Weibo access token"
+    "SETUP_BY": {
+            "description": "Who initiated this setup",
+            "value": ""
     }
   },
-  "scripts": {
-    "postdeploy": "bundle exec rake db:migrate"
-  }
+  "generator": "https://www.expeditedssl.com/heroku-button-maker"
 }
