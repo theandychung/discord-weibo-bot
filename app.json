@@ -20,6 +20,5 @@
             "description": "Who initiated this setup",
             "value": ""
     }
-  },
-  "generator": "https://www.expeditedssl.com/heroku-button-maker"
+  }
 }
