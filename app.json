@@ -2,6 +2,8 @@
   "name": "Discord Weibo Bot",
   "description": "Post Weibo posts to Discord through Webhook",
   "website": "http://rubyonrails.org",
+  "success_url": "/welcome",
+  "addons": ["heroku-postgresql:hobby-dev", "papertrail"],
   "env": {
     "WEBHOOK_URL": {
       "description": "Discord webhook URL https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks"
@@ -28,5 +30,8 @@
     "USERNAME": {
       "description": "Weibo user's username",
     }
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
   }
 }
