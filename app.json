@@ -24,14 +24,14 @@
       "value": "http://api.weibo.com/oauth2/default.html"
     },
     "5.Weibo ID":{
-      "description": "The ID of Weibo user(s) you want to track with bot"
+      "description": "The ID of Weibo user(s) you want to track with this bot, use (,) to split. Ex: 123, 456, 123"
     },
     "6.USERNAME": {
-      "description": "Weibo user's username",
+      "description": "Your Weibo username",
       "required": false
     },
     "7.PASSWORDS": {
-      "description": "Weibo user log in passwords",
+      "description": "Your Weibo passwords",
       "required": false
     }
   },
