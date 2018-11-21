@@ -16,24 +16,14 @@
     "ACCESS_TOKEN": {
       "description": "Weibo access token"
     },
-    "APP_KEY": {
-      "description": "Weibo app key"
+    "RAILS_ENV": "production",
+    "COOKIE_SECRET": {
+            "description": "This gets generated",
+            "generator": "secret"
     },
-    "APP_SECRET": {
-      "description":  "Weibo app secret"
-    },
-    "LAST_WEIBO_ID": {
-      "description": "The id of last weibo post checked",
-      "required": false
-    },
-    "PASSWORDS": {
-      "description": "Weibo user log in passwords",
-    },
-    "REDIRECT_URL": {
-      "description": "Redirect URL",
-    },
-    "USERNAME": {
-      "description": "Weibo user's username",
+    "SETUP_BY": {
+            "description": "Who initiated this setup",
+            "value": ""
     }
   }
 }
