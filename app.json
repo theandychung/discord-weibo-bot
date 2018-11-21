@@ -10,26 +10,28 @@
       "webhook"
   ],
   "env": {
-    "WEBHOOK_URL": {
+    "1. WEBHOOK_URL": {
       "description": "Discord webhook URL https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks"
     },
     "ACCESS_TOKEN": {
       "description": "Weibo access token"
     },
-    "APP_KEY": {
+    "2. APP_KEY": {
       "description": "Weibo app key"
     },
-    "APP_SECRET": {
+    "3.APP_SECRET": {
       "description":  "Weibo app secret"
     },
     "PASSWORDS": {
-      "description": "Weibo user log in passwords"
+      "description": "Weibo user log in passwords",
+      "required": false
     },
     "REDIRECT_URL": {
       "description": "Redirect URL"
     },
     "USERNAME": {
-      "description": "Weibo user's username"
+      "description": "Weibo user's username",
+      "required": false
     }
   }
 }
