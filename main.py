@@ -12,8 +12,8 @@ import re
 count = 0
 sleep_time = 200
 
-pass_loopA = False
-looping = False
+pass_loopA = True
+looping = True
 
 
 def worth(post_id): # check worthy to post
