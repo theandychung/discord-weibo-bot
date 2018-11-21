@@ -13,5 +13,11 @@ import re
 
 s_test = """im the first line"""
 
-if 'http' in STR:
-    print("true")
+count =0
+sleep_time = 200
+import time
+while True:
+    print(count)
+    None if count is 0 else time.sleep(4)
+    print("here")
+    count = count + 1

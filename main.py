@@ -10,7 +10,7 @@ import re
 
 # init
 count = 0
-sleep_time = 2
+sleep_time = 200
 
 pass_loopA = True
 looping = True
@@ -89,5 +89,5 @@ while True:
             break
         else:
             print(count)
+            None if count is 0 else time.sleep(sleep_time)  # init loop no sleep
             count = count + 1
-            time.sleep(sleep_time)
