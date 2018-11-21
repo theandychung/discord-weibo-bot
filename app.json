@@ -10,15 +10,30 @@
       "webhook"
   ],
   "env": {
-    "BUILDPACK_URL": "https://github.com/dmathieu/heroku-buildpack-submodules",
-    "RAILS_ENV": "production",
-    "COOKIE_SECRET": {
-            "description": "This gets generated",
-            "generator": "secret"
+    "WEBHOOK_URL": {
+      "description": "Discord webhook URL https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks"
     },
-    "SETUP_BY": {
-            "description": "Who initiated this setup",
-            "value": ""
+    "ACCESS_TOKEN": {
+      "description": "Weibo access token"
+    },
+    "APP_KEY": {
+      "description": "Weibo app key"
+    },
+    "APP_SECRET": {
+      "description":  "Weibo app secret"
+    },
+    "LAST_WEIBO_ID": {
+      "description": "The id of last weibo post checked",
+      "required": false
+    },
+    "PASSWORDS": {
+      "description": "Weibo user log in passwords",
+    },
+    "REDIRECT_URL": {
+      "description": "Redirect URL",
+    },
+    "USERNAME": {
+      "description": "Weibo user's username",
     }
   }
 }
