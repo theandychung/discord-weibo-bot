@@ -1,6 +1,6 @@
 from weibopy import WeiboOauth2, WeiboClient
 from my_weibo_api.WeiboAPI import SinaAPI
-from globalv import data_json
+from global_values import data_json
 
 
 class Client:

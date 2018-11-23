@@ -1,5 +1,5 @@
 # from dataIO import fileIO
-from globalv import data_json
+from global_values import data_json
 
 """
 This file is to check if the weibo post is worth transferring to discord.

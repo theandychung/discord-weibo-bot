@@ -1,5 +1,5 @@
 from discord_hooks import Webhook
-from globalv import data_json
+from global_values import data_json
 from weibo_api.weibo.status import Status
 
 import html2text

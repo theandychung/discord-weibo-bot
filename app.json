@@ -10,27 +10,27 @@
       "webhook"
   ],
   "env": {
-    "1.WEBHOOK_URL": {
+    "WEBHOOK_URL": {
       "description": "Discord webhook URL https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks"
     },
-    "2.APP_KEY": {
+    "APP_KEY": {
       "description": "Weibo app key"
     },
-    "3.APP_SECRET": {
+    "APP_SECRET": {
       "description":  "Weibo app secret"
     },
-    "4.REDIRECT_URL": {
+    "REDIRECT_URL": {
       "description": "Redirect URL",
       "value": "http://api.weibo.com/oauth2/default.html"
     },
-    "5.Weibo ID":{
-      "description": "The ID of Weibo user(s) you want to track with this bot, use (,) to split. Ex: 123, 456, 123"
+    "WEIBO_ID":{
+      "description": "The Weibo ID(s) you want to track with this bot, use (,) to split. Ex: 123, 456, 103"
     },
-    "6.USERNAME": {
+    "USERNAME": {
       "description": "Your Weibo username",
       "required": false
     },
-    "7.PASSWORDS": {
+    "PASSWORDS": {
       "description": "Your Weibo passwords",
       "required": false
     }
