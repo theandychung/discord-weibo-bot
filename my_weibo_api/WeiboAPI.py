@@ -203,7 +203,7 @@ class SinaAPI():
 
 
 if __name__ == "__main__":
-    from globalv import data_json
+    from global_values import data_json
 
     APP_KEY = data_json["APP_KEY"]
     APP_SECRET = data_json["APP_SECRET"]

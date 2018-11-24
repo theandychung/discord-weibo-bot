@@ -1,5 +1,5 @@
-from discord_hooks import Webhook
-from globalv import data_json
+from dhooks import Webhook
+from global_values import data_json
 """
 modified from
 https://github.com/4rqm/dhooks
