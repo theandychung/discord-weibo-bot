@@ -12,9 +12,8 @@ This ongoing project is inspired by [discord-twitter-bot](https://github.com/NNT
 
 <img src="https://i.imgur.com/QgnEfM0.png" width="500" >
 
-<img src="https://i.imgur.com/Jx6m1IG.png" width="500" >
 
 ## Requirements
 - Heroku Account
-- Discord Account, Discord Desktop
-- Weibo Account (working on it)
+- Discord Account, Discord Desktop (for webhook urls)
+- Weibo Account

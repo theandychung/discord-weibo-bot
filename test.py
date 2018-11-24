@@ -2,7 +2,7 @@ import re
 from weibo_api.weibo_api.client import WeiboClient
 import html2text
 from global_values import data_json
-from discord_hooks import Webhook
+from dhooks import Webhook
 import time
 
 first_run_send = True  # false

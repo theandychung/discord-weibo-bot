@@ -5,3 +5,4 @@ urllib3
 certifi
 html2text
 weibopy
+dhooks

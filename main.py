@@ -1,10 +1,9 @@
-from discord_hooks import Webhook
+from dhooks import Webhook, Embed
 from global_values import data_json
 from weibo_api.weibo_api.client import WeiboClient
 import time
 import html2text
 from my_weibo_api.weiboclient import Client
-# from my_weibo_api.worth_posting import WorthPosting
 from my_weibo_api.weibo2discordwebhook import Weibo2DiscordWebhook
 import re
 
@@ -12,7 +11,6 @@ import re
 count = 0
 sleep_time = 200
 last_weibo_id = {}
-weibo_id = data_json["Weibo"]["weibo_id"]
 
 skip_loopA = True  # true
 looping = True  # true
@@ -79,7 +77,7 @@ while True:
         h = html2text.HTML2Text()
         h.ignore_links = True
 
-        for za_id in weibo_id:
+        for za_id in data_json["Weibo"]["weibo_id"]:
             p = client.people(za_id)
             hook = Webhook(data_json["Discord"]["webhook_url"],
                            content="Something went wrong, please contact the developer!",

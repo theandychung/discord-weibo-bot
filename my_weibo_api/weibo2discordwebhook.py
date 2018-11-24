@@ -1,4 +1,4 @@
-from discord_hooks import Webhook
+from dhooks import Webhook
 from global_values import data_json
 """
 modified from
