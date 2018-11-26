@@ -24,7 +24,7 @@ class Client:
         }
         :return: access token (str)
         """
-        if self._token_found is False:
+        if self._token_found() is False:
             """acquire new token or renew token"""
             """step 1: Get code"""
             self.oauth = WeiboOauth2(data_json["Weibo"]["app_key"],
