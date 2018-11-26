@@ -102,6 +102,6 @@ while True:
     if looping is False:
         break
     else:
-        print(count)
+        # print(count)
         None if count is 0 else time.sleep(sleep_time)  # init loop no sleep
         count = count + 1
