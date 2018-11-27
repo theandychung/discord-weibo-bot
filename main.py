@@ -9,7 +9,7 @@ import re
 
 # init
 count = 0
-sleep_time = 90
+sleep_time = 250
 last_weibo_id = {}
 
 skip_loopA = False  # false
