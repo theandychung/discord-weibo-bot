@@ -1,4 +1,4 @@
-from weibopy import WeiboOauth2, WeiboClient
+from weibopy.weibopy import WeiboOauth2, WeiboClient
 from my_weibo_api.WeiboAPI import SinaAPI
 from global_values import data_json
 

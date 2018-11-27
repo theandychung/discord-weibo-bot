@@ -20,7 +20,6 @@ setup(
         'rsa',
         'urllib3[secure]',
         'html2text',
-        'weibopy',
         'dhooks'
     ],
     include_package_data=True,
