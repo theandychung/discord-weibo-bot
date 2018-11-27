@@ -1,4 +1,4 @@
-from dhooks import Webhook, Embed
+from dhooks import Webhook
 from global_values import data_json
 from weibo_api.weibo_api.client import WeiboClient
 import time
@@ -9,10 +9,10 @@ import re
 
 # init
 count = 0
-sleep_time = 250
+sleep_time = 2
 last_weibo_id = {}
 
-skip_loopA = False  # false
+skip_loopA = True  # false
 looping = True  # true
 first_run_send = False  # false
 
@@ -41,9 +41,9 @@ c.get_token()
 c.set_client()
 while True:
     try:
-        # if skip_loopA is True:
-        #     raise Exception
-        # print("fetching with username/passwords")
+        if skip_loopA is True:
+            raise Exception
+        print("fetching with username/passwords")
         # if username is not found, raise to goto loop B
         if data_json["Weibo"]["username"] == ""\
                 or data_json["Weibo"]["app_key"] == ""\
@@ -64,9 +64,10 @@ while True:
             # embed.post()  # post to discord
             print('sent')
         # limit rate of fetching from weibo = 150/hr, min=24? sec/ping
+        first_run_send = True
 
     except Exception:
-        # print("fetching without username/passwords")
+        print("fetching without username/passwords")
         # loop B: fetch without username/passwords
 
         def convert_content(html_content):
@@ -94,13 +95,14 @@ while True:
                         if status.original_pic is not None:
                             hook.set_image(status.original_pic)
                         # hook.set_footer(text=u"发布时间：{}".format(status.created_at))
-                        hook.post()
+                        # hook.post()
+                        print("sent")
                     break
 
     if looping is False:
         break
     else:
-        # print(count)
+        print(count)
         None if count is 0 else time.sleep(sleep_time)  # init loop no sleep
         count = count + 1
-    first_run_send = False
+
