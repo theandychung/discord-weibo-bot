@@ -1,9 +1,6 @@
 from dhooks import Webhook
 from global_values import data_json
 """
-modified from
-https://github.com/4rqm/dhooks
-
 discord webhook documentation
 https://discordapp.com/developers/docs/resources/webhook#execute-webhook
 """
@@ -13,7 +10,7 @@ class Weibo2DiscordWebhook(Webhook):
     weibo_statuses = {}
 
     def __init__(self, weibo_statuses, **kwargs):
-        self.url = data_json["Discord"]["WEBHOOK_URL"]
+        self.url = data_json["Discord"]["webhook_url"]
         super().__init__(self.url, **kwargs)
         if "text" in weibo_statuses:
             self.content = weibo_statuses["text"]
