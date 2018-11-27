@@ -40,34 +40,30 @@ c = Client()
 c.get_token()
 c.set_client()
 while True:
-    # try:
-    # if skip_loopA is True:
-    #     raise Exception
-    # print("fetching with username/passwords")
-    # if username is not found, raise to goto loop B
-    if data_json["Weibo"]["username"] == ""\
-            or data_json["Weibo"]["app_key"] == ""\
-            or data_json["Weibo"]["app_secret"] == "":
-        raise Exception
-    # Loop A: fetch with username/passwords
-    # print("token expires in: " + str(c.token_expire_date()) + " sec")
-    # todo: renew token if it is about to expire
-    # check fetching limits
-    lim = c.get_weibo_package("account/rate_limit_status")
-    # print("remaining ip hits: " + str(lim["remaining_ip_hits"]))
-    if lim["remaining_ip_hits"] <= 1:
-        print("continue after " + str(lim["reset_time_in_seconds"]) + " seconds")
-        time.sleep(lim["reset_time_in_seconds"])
-    result = c.get_weibo_package("statuses/home_timeline")  # fetch posts
-    if worth(result["statuses"][0]["user"]["id"], result["statuses"][0]["id"]) is True:
-        embed = Weibo2DiscordWebhook(result["statuses"][0])  # convert to discord file
-        # embed.post()  # post to discord
-        print('sent')
-    # limit rate of fetching from weibo = 150/hr, min=24? sec/ping
-
-
-        if looping is False:
-            break
+    try:
+        # if skip_loopA is True:
+        #     raise Exception
+        # print("fetching with username/passwords")
+        # if username is not found, raise to goto loop B
+        if data_json["Weibo"]["username"] == ""\
+                or data_json["Weibo"]["app_key"] == ""\
+                or data_json["Weibo"]["app_secret"] == "":
+            raise Exception
+        # Loop A: fetch with username/passwords
+        # print("token expires in: " + str(c.token_expire_date()) + " sec")
+        # todo: renew token if it is about to expire
+        # check fetching limits
+        lim = c.get_weibo_package("account/rate_limit_status")
+        # print("remaining ip hits: " + str(lim["remaining_ip_hits"]))
+        if lim["remaining_ip_hits"] <= 1:
+            print("continue after " + str(lim["reset_time_in_seconds"]) + " seconds")
+            time.sleep(lim["reset_time_in_seconds"])
+        result = c.get_weibo_package("statuses/home_timeline")  # fetch posts
+        if worth(result["statuses"][0]["user"]["id"], result["statuses"][0]["id"]) is True:
+            embed = Weibo2DiscordWebhook(result["statuses"][0])  # convert to discord file
+            # embed.post()  # post to discord
+            print('sent')
+        # limit rate of fetching from weibo = 150/hr, min=24? sec/ping
 
     except Exception:
         # print("fetching without username/passwords")
@@ -107,3 +103,4 @@ while True:
         # print(count)
         None if count is 0 else time.sleep(sleep_time)  # init loop no sleep
         count = count + 1
+    first_run_send = False
