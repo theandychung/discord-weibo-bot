@@ -9,7 +9,7 @@ import re
 
 # init
 count = 0
-sleep_time = 2
+sleep_time = 200
 last_weibo_id = {}
 
 skip_loopA = True  # false
@@ -102,7 +102,7 @@ while True:
     if looping is False:
         break
     else:
-        print(count)
+        # print(count)
         None if count is 0 else time.sleep(sleep_time)  # init loop no sleep
         count = count + 1
 
