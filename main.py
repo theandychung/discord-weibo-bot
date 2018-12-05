@@ -10,8 +10,6 @@ count = 0
 sleep_time = 200
 last_weibo_id = {}
 
-skip_loopA = True  # false
-looping = True  # true
 first_run_send = False  # false
 
 
@@ -39,7 +37,7 @@ c.get_token()
 c.set_client()
 while True:
 
-    print("fetching without username/passwords")
+    # print("fetching without username/passwords")
     # loop B: fetch without username/passwords
 
     def convert_content(html_content):
