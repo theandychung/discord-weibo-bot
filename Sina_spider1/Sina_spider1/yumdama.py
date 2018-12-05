@@ -1,5 +1,7 @@
 # encoding=utf-8
-import httplib, mimetypes, urlparse, json, time
+import httplib2 as httplib
+import urllib.parse as urlparse
+import mimetypes, json, time
 
 ######################################################################
 
@@ -168,7 +170,7 @@ def get_content_type(filename):
 
 def identify():
     if (username == 'username'):
-        print '请设置好相关参数再测试'
+        print('请设置好相关参数再测试')
     else:
         # 初始化
         yundama = YDMHttp(username, password, appid, appkey)

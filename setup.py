@@ -6,8 +6,8 @@ setup(
     description="A discord bot which fetches the most "
                 "recent weibo posts to discord through webhook",
     classifiers=[
-        "License :: OSI Approved :: MIT License"
-        "Programming Language :: Python :: 3.7",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.7"
     ],
     keywords="discord bot weibo",
     author="theandychung",
