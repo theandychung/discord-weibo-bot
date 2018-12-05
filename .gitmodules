@@ -2,3 +2,6 @@
 [submodule "weibo_api"]
 	path = weibo_api
 	url = https://github.com/theandychung/weibo_api.git
+[submodule "IP_POOL"]
+	path = IP_POOL
+	url = https://github.com/theandychung/IP_POOL.git
