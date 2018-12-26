@@ -57,10 +57,10 @@ while True:
                         embed = None
                         if status.original_pic is not None:
                             embed = Embed(image_url=status.original_pic)
-                        # hook.send(convert_content(status.longTextContent),
-                        #           username=p.name,
-                        #           avatar_url=p.avatar,
-                        #           embed=embed)
+                        hook.send(convert_content(status.longTextContent),
+                                  username=p.name,
+                                  avatar_url=p.avatar,
+                                  embed=embed)
                         print("sent")
                     break
         time.sleep(sleep_time)
