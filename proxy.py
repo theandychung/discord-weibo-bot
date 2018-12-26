@@ -31,6 +31,7 @@ class IPPool:
                              proxies={protocol: protocol + '://' + ip + ':' + port},
                              timeout=3)
                 proxy_ip = {protocol: protocol + '://' + ip + ':' + port}
+                print(proxy_ip)
                 break
             except:
                 pass

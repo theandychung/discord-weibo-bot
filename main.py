@@ -61,8 +61,9 @@ while True:
                                   username=p.name,
                                   avatar_url=p.avatar,
                                   embed=embed)
-                        # print("sent")
+                        print("sent")
                     break
+        print("sleeping")
         time.sleep(sleep_time)
     except ConnectionError as e:
         print(e)
@@ -72,5 +73,6 @@ while True:
         else:
             proxy = None
 
-    except Exception:
+    except Exception as e:
+        print (e)
         break
