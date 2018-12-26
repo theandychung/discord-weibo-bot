@@ -20,7 +20,9 @@ setup(
         'rsa',
         'urllib3[secure]',
         'html2text',
-        'dhooks'
+        'dhooks',
+        'beautifulsoup4',
+        'lxml'
     ],
     include_package_data=True,
     zip_safe=False,

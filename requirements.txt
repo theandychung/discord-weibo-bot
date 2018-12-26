@@ -4,6 +4,6 @@ rsa
 urllib3
 certifi
 html2text
-dhooks
+dhooks >= 1.1.0
 beautifulsoup4
 lxml
