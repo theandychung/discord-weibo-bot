@@ -39,6 +39,7 @@ def convert_content(html_content):
 
 hook = Webhook(data_json["Discord"]["webhook_url"])
 proxy = IPPool().get_sslproxies_ip
+fdaf
 while True:
     try:
         # print("fetching without username/passwords")
@@ -58,7 +59,7 @@ while True:
                                   username=p.name,
                                   avatar_url=p.avatar,
                                   embed=embed)
-                        # print("sent")
+                        print("sent")
                         break
     except ConnectionError as e:
         print(e)
