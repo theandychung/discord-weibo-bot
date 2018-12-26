@@ -6,3 +6,4 @@ certifi
 html2text
 dhooks
 beautifulsoup4
+lxml
