@@ -46,7 +46,6 @@ while True:
         client = WeiboClient(proxies=proxy)
         h = html2text.HTML2Text()
         h.ignore_links = True
-        client.test()
         for za_id in data_json["Weibo"]["weibo_id"]:
             p = client.people(za_id)
             for status in p.statuses.page(1):
