@@ -8,7 +8,7 @@ from proxy import IPPool
 # init
 sleep_time = 60
 last_weibo_id = {}
-first_run_send = False  # false
+first_run_send = True  # false
 
 
 def worth(user_id, post_id):
