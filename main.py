@@ -4,20 +4,18 @@ from weibo_api.weibo_api.client import WeiboClient
 import html2text
 import re
 from proxy import IPPool
+import time
 
 # init
-sleep_time = 60
+sleep_time = 3
 last_weibo_id = {}
-first_run_send = False  # false
-
+first_run_send = True  # false
+use_proxy = True
 
 def worth(user_id, post_id):
     """check worthy to post"""
     user_id = str(user_id)
     post_id = str(post_id)
-    if user_id not in data_json["Weibo"]["weibo_id"]\
-            and data_json["Weibo"]["weibo_id"] != []:
-        return False
     if user_id not in last_weibo_id:
         last_weibo_id.update({user_id: post_id})
         if first_run_send:
@@ -38,8 +36,12 @@ def convert_content(html_content):
 
 
 hook = Webhook(data_json["Discord"]["webhook_url"])
-proxy = IPPool().get_sslproxies_ip
-fdaf
+
+if use_proxy == True:
+    proxy = IPPool().get_sslproxies_ip
+else:
+    proxy = None
+
 while True:
     try:
         # print("fetching without username/passwords")
@@ -55,16 +57,20 @@ while True:
                         embed = None
                         if status.original_pic is not None:
                             embed = Embed(image_url=status.original_pic)
-                        hook.send(convert_content(status.longTextContent),
-                                  username=p.name,
-                                  avatar_url=p.avatar,
-                                  embed=embed)
+                        # hook.send(convert_content(status.longTextContent),
+                        #           username=p.name,
+                        #           avatar_url=p.avatar,
+                        #           embed=embed)
                         print("sent")
-                        break
+                    break
+        time.sleep(sleep_time)
     except ConnectionError as e:
         print(e)
         print("get new ip")
-        proxy = IPPool().get_sslproxies_ip
+        if use_proxy == True:
+            proxy = IPPool().get_sslproxies_ip
+        else:
+            proxy = None
 
     except Exception:
         break
