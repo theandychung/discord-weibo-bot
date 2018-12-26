@@ -9,11 +9,6 @@ else:
             "webhook_url": os.environ["WEBHOOK_URL"]
         },
         "Weibo": {
-            "app_key": os.environ["APP_KEY"],
-            "app_secret": os.environ["APP_SECRET"],
-            "passwords": os.environ["PASSWORDS"],
-            "redirect_url": os.environ["REDIRECT_URL"],
-            "username": os.environ["USERNAME"],
             "weibo_id": os.environ["WEIBO_ID"].replace(" ", "").split(",")
         }
     }
