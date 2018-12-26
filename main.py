@@ -59,7 +59,7 @@ while True:
                                   username=p.name,
                                   avatar_url=p.avatar,
                                   embed=embed)
-                        print("sent")
+                        # print("sent")
                     break
     except Exception as e:
         print(e)
