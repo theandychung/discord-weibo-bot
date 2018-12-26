@@ -4,69 +4,61 @@ from bs4 import BeautifulSoup
 import requests
 
 
-class SingleIP:
-    def __init__(self, protocol, ip, port, ping):
-        self.protocol = protocol
-        self.ip = ip
-        self.port = port
-        self.ping = ping
-
-    def __repr__(self):
-        return self.protocol + '://' + self.ip + ':' + self.port
-
-
 class IPPool:
     def __init__(self):
-        self.ip_list = self.import_ip()
+        pass
 
-    def import_ip(self):
-        ip_list = []
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
-        }
-        url = 'https://www.kuaidaili.com/free/intr/'
+    @property
+    def get_sslproxies_ip(self):
+        proxy_ip = {}
+        url = 'https://www.sslproxies.org/'
         try:
-            web_data = requests.get(url, headers=headers)
+            web_data = requests.get(url)
         except ConnectionError:
-            print("cannot get IPs from kuaidaili")
+            print("cannot get IPs from sslproxies")
             return None
-
         soup = BeautifulSoup(web_data.text, 'lxml')
         ips = soup.find_all('tr')
-        for i in range(1, len(ips)):
+        # for i in range(1, min(len(ips), 5)):
+        for i in range(1, len(ips[1:100])):
             ip_info = ips[i]
             tds = ip_info.find_all('td')
-            protocol = tds[3].text.lower()
+            protocol = 'https'
             ip = tds[0].text
             port = tds[1].text
             try:
-                requests.get('https://m.weibo.cn/', proxies={protocol: ip+':'+port})
-                ip_list.append(SingleIP(protocol=protocol,
-                                        ip=ip,
-                                        port=port,
-                                        ping=float(tds[5].text[:-1])))
+                requests.get('https://m.weibo.cn/',
+                             proxies={protocol: protocol + '://' + ip + ':' + port},
+                             timeout=3)
+                proxy_ip = {protocol: protocol + '://' + ip + ':' + port}
+                break
             except:
                 pass
-        ip_list = sorted(ip_list, key=lambda x: float(x.ping))
-        return ip_list
+        if proxy_ip == {}:
+            import time
+            print("did not find any good ip, wait 360 sec for a new list")
+            time.sleep(360)
+            proxy_ip = self.get_sslproxies_ip()
+        return proxy_ip
 
-    def next_ip(self):
-        if self.is_empty() is False:
-            print("getting new ip from storage")
-            ip = self.ip_list[0]
-            del self.ip_list[0]
-            return ip
-        else:
-            print("getting new list")
-            self.ip_list = self.import_ip()
-
-    def is_empty(self):
-        if not self.ip_list:
-            return True
-        return False
 
 
 if __name__ == '__main__':
-    pool = IPPool()
-    print(''.join(repr(pool.ip_list)))
-    print(pool.next_ip())
+    proxy = IPPool().get_sslproxies_ip
+    print(proxy)
+
+    # proxy = {'https': 'https://87.247.24.198:59546'}
+    # print(requests.get('https://m.weibo.cn/', proxies=proxy).status_code)
+    # print(requests.get("https://httpbin.org/ip", proxies=proxy).text)
+
+    # def get_tor_session():
+    #     session = requests.session()
+    #     session.proxies = {'https': 'https://87.247.24.198:59546'}
+    #     return session
+    # session = get_tor_session()
+    # session.get("https://m.weibo.cn/")
+    # print(session.get("https://httpbin.org/ip").text)
+    # Above should print an IP different than your public IP
+
+    # Following prints your normal public IP
+    # print(requests.get("https://httpbin.org/ip").text)
