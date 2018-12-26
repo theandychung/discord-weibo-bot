@@ -7,9 +7,9 @@ from proxy import IPPool
 import time
 
 # init
-sleep_time = 3
+sleep_time = 60
 last_weibo_id = {}
-first_run_send = True  # false
+first_run_send = False  # false
 use_proxy = True
 
 def worth(user_id, post_id):
@@ -61,7 +61,7 @@ while True:
                                   username=p.name,
                                   avatar_url=p.avatar,
                                   embed=embed)
-                        print("sent")
+                        # print("sent")
                     break
         time.sleep(sleep_time)
     except ConnectionError as e:
