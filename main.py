@@ -60,7 +60,7 @@ while True:
                                   embed=embed)
                         print("sent")
                     break
-        print("sleeping")
+        # print("sleeping")
         time.sleep(sleep_time)
     except (ConnectionError, ConnectionError) as e:
         print(e)
