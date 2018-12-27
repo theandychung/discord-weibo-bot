@@ -62,7 +62,7 @@ while True:
                     break
         # print("sleeping")
         time.sleep(sleep_time)
-    except (ConnectionError, ConnectionError) as e:
+    except (ConnectionError, requests.exceptions.ConnectionError) as e:
         print(e)
         print("get new ip")
         proxy = IPPool().get_sslproxies_ip if use_proxy is True else None
