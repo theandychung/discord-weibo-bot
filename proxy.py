@@ -45,12 +45,13 @@ class IPPool:
 
 
 if __name__ == '__main__':
-    proxy = IPPool().get_sslproxies_ip
-    print(proxy)
+    # proxy = IPPool().get_sslproxies_ip
+    # print(proxy)
 
-    # proxy = {'https': 'https://87.247.24.198:59546'}
-    # print(requests.get('https://m.weibo.cn/', proxies=proxy).status_code)
-    # print(requests.get("https://httpbin.org/ip", proxies=proxy).text)
+    proxy = {'https': 'https://66.98.56.237:8080'}
+    print(requests.get("https://httpbin.org/ip", proxies=proxy).text)
+    print(requests.get('https://m.weibo.cn/', proxies=proxy).status_code)
+
 
     # def get_tor_session():
     #     session = requests.session()

@@ -1,5 +1,5 @@
 pip
-requests
+requests >= 2.21.0
 rsa
 urllib3
 certifi

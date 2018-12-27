@@ -5,6 +5,7 @@ import html2text
 import re
 from proxy import IPPool
 import time
+import requests
 
 # init
 sleep_time = 60
@@ -36,11 +37,7 @@ def convert_content(html_content):
 
 
 hook = Webhook(data_json["Discord"]["webhook_url"])
-
-if use_proxy == True:
-    proxy = IPPool().get_sslproxies_ip
-else:
-    proxy = None
+proxy = IPPool().get_sslproxies_ip if use_proxy is True else None
 
 while True:
     try:
@@ -65,14 +62,11 @@ while True:
                     break
         print("sleeping")
         time.sleep(sleep_time)
-    except ConnectionError as e:
+    except (ConnectionError, ConnectionError) as e:
         print(e)
         print("get new ip")
-        if use_proxy == True:
-            proxy = IPPool().get_sslproxies_ip
-        else:
-            proxy = None
+        proxy = IPPool().get_sslproxies_ip if use_proxy is True else None
 
     except Exception as e:
-        print (e)
+        print(e)
         break
