@@ -6,9 +6,7 @@
 
 This [Discord](https://discordapp.com/) Bot monitors the user defined specific [Weibo](https://www.weibo.com/) account(s) using proxy ip. If any monitored Weibo account made new posts or reposts, it would pass the contents to discord through discord Webhook (including images). The Discord bot will be hosted on [Heroku](https://www.heroku.com/what) server.
 
-<img src="https://i.imgur.com/yZzFDiT.png" width="30%">
-<img src="https://i.imgur.com/BnlcQtN.png" width="30%">
-<img src="https://i.imgur.com/7Wf9Cql.png" width="30%">
+<img src="https://i.imgur.com/yZzFDiT.png" width="30%"> <img src="https://i.imgur.com/BnlcQtN.png" width="30%"> <img src="https://i.imgur.com/7Wf9Cql.png" width="30%">
 
 ## Q&A
 [What is Discord?](https://en.wikipedia.org/wiki/Discord_(software))
