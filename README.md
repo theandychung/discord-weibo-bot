@@ -17,6 +17,7 @@ This [Discord](https://discordapp.com/) Bot monitors the user defined specific [
 ## Installation
 1. Register Heroku account.
 2. Click the deploy button below and fill in the form.
+
 <a href="https://heroku.com/deploy?template=https://github.com/theandychung/discord-weibo-bot"><img src="https://www.herokucdn.com/deploy/button.png" width="120"></a>
 <img src="https://i.imgur.com/AuR51Km.png" width="50%">
 
