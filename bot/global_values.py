@@ -1,4 +1,4 @@
-from dataIO import fileIO
+from bot.dataIO import fileIO
 import os
 
 if fileIO("data.json", "check"):

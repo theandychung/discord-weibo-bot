@@ -1,9 +1,9 @@
 from dhooks import Webhook, Embed
-from global_values import data_json
+from bot.global_values import data_json
 from weibo_api.weibo_api.client import WeiboClient
 import html2text
 import re
-from proxy import IPPool
+from bot.proxy import IPPool
 import time
 import requests
 
@@ -60,7 +60,7 @@ while True:
                                   embed=embed)
                         print("sent")
                     break
-        # print("sleeping")
+        print("sleeping")
         time.sleep(sleep_time)
     except (ConnectionError, requests.exceptions.ConnectionError) as e:
         print(e)

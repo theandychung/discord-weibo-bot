@@ -1,5 +1,5 @@
 from dhooks import Webhook
-from global_values import data_json
+from bot.global_values import data_json
 """
 discord webhook documentation
 https://discordapp.com/developers/docs/resources/webhook#execute-webhook

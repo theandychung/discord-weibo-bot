@@ -4,16 +4,25 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/theandychung/discord-weibo-bot)
 
-This discord bot helps users to fetch weibo posts from Weibo, then pass the posts to discord through discord Webhook.
+This [Discord](https://discordapp.com/) Bot monitors the user defined specific [Weibo](https://www.weibo.com/) account(s) using proxy ip. If any monitored Weibo account made new posts or reposts, it would pass the contents to discord through discord Webhook (including images). The Discord bot will be hosted on [Heroku](https://www.heroku.com/what) server.
 
-This ongoing project is inspired by [discord-twitter-bot](https://github.com/NNTin/discord-twitter-bot).
+![](https://i.imgur.com/yZzFDiT.png)
+![](https://i.imgur.com/BnlcQtN.png)
+![](https://i.imgur.com/7Wf9Cql.png)
 
-<img src="https://i.imgur.com/KtaSjy2.png" width="500" >
+## Q&A
+[What is Discord?](https://en.wikipedia.org/wiki/Discord_(software))
+[What is Discord Webhook?](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
+[What is Weibo?](https://en.wikipedia.org/wiki/Sina_Weibo)
+[What is Heroku?](https://www.heroku.com/what)
 
-<img src="https://i.imgur.com/QgnEfM0.png" width="500" >
-
+## Installation
+Click the deploy button below and fill in the form.
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/theandychung/discord-weibo-bot)
+![](https://i.imgur.com/AuR51Km.png)
 
 ## Requirements
 - Heroku Account
 - Discord Account, Discord Desktop (for webhook urls)
-- Weibo Account
+
+*This ongoing project is inspired by [discord-twitter-bot](https://github.com/NNTin/discord-twitter-bot).*
