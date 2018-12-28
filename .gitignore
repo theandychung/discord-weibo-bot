@@ -1,5 +1,4 @@
 .idea/*
 __pycache__/*
-data.json
 *.pyc
 test.py

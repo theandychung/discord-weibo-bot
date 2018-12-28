@@ -1,0 +1,12 @@
+{
+    "Discord" : {
+        "webhook_url" : "https://discordapp.com/api/webhooks/505261949701980160/MAeiEjTzEAj263b1fWGqHA15M0eFj-Gj_a25rP_C02OZokJMwdkZeR4qg7XQ6chOE_WN"
+    },
+    "Weibo" : {
+        "islocal" : "",
+        "weibo_id" : [
+            "5732523783",
+            "5013723252"
+        ]
+    }
+}
