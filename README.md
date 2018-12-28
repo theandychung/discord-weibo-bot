@@ -6,9 +6,9 @@
 
 This [Discord](https://discordapp.com/) Bot monitors the user defined specific [Weibo](https://www.weibo.com/) account(s) using proxy ip. If any monitored Weibo account made new posts or reposts, it would pass the contents to discord through discord Webhook (including images). The Discord bot will be hosted on [Heroku](https://www.heroku.com/what) server.
 
-![](https://i.imgur.com/yZzFDiT.png)
-![](https://i.imgur.com/BnlcQtN.png)
-![](https://i.imgur.com/7Wf9Cql.png)
+<img src="https://i.imgur.com/yZzFDiT.png" width="80%">
+<img src="https://i.imgur.com/BnlcQtN.png" width="80%">
+<img src="https://i.imgur.com/7Wf9Cql.png" width="80%">
 
 ## Q&A
 [What is Discord?](https://en.wikipedia.org/wiki/Discord_(software))
@@ -17,10 +17,10 @@ This [Discord](https://discordapp.com/) Bot monitors the user defined specific [
 [What is Heroku?](https://www.heroku.com/what)
 
 ## Installation
-Click the deploy button below and fill in the form.
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/theandychung/discord-weibo-bot)
-![](https://i.imgur.com/AuR51Km.png)
-
+1. Register Heroku account.
+2. Click the deploy button below and fill in the form.
+<a href="https://heroku.com/deploy?template=https://github.com/theandychung/discord-weibo-bot"><img src="https://www.herokucdn.com/deploy/button.png" width="120"></a>
+<img src="https://i.imgur.com/AuR51Km.png" width="50%">
 ## Requirements
 - Heroku Account
 - Discord Account, Discord Desktop (for webhook urls)
