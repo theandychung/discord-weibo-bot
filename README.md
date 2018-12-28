@@ -9,16 +9,17 @@ This [Discord](https://discordapp.com/) Bot monitors the user defined specific [
 <img src="https://i.imgur.com/yZzFDiT.png" width="30%"> <img src="https://i.imgur.com/BnlcQtN.png" width="30%"> <img src="https://i.imgur.com/7Wf9Cql.png" width="30%">
 
 ## Q&A
-[What is Discord?](https://en.wikipedia.org/wiki/Discord_(software))
-[What is Discord Webhook?](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
-[What is Weibo?](https://en.wikipedia.org/wiki/Sina_Weibo)
-[What is Heroku?](https://www.heroku.com/what)
+- [What is Discord?](https://en.wikipedia.org/wiki/Discord_(software))
+- [What is Discord Webhook?](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
+- [What is Weibo?](https://en.wikipedia.org/wiki/Sina_Weibo)
+- [What is Heroku?](https://www.heroku.com/what)
 
 ## Installation
 1. Register Heroku account.
 2. Click the deploy button below and fill in the form.
 <a href="https://heroku.com/deploy?template=https://github.com/theandychung/discord-weibo-bot"><img src="https://www.herokucdn.com/deploy/button.png" width="120"></a>
 <img src="https://i.imgur.com/AuR51Km.png" width="50%">
+
 ## Requirements
 - Heroku Account
 - Discord Account, Discord Desktop (for webhook urls)
