@@ -13,6 +13,7 @@ last_weibo_id = {}
 first_run_send = False  # False
 use_proxy = True
 
+
 def worth(user_id, post_id):
     """check worthy to post"""
     user_id = str(user_id)
@@ -32,7 +33,7 @@ def convert_content(html_content):
     if 'http' in html_content:
         html_content = re.sub(r'(.*)(<br\s*/>.*)(<br\s*/>.*)', r'\1\n', html_content)
     markdown_content = h.handle(html_content)
-    print(markdown_content)
+    # print(markdown_content)
     return markdown_content
 
 
@@ -41,8 +42,6 @@ proxy = IPPool().get_sslproxies_ip if use_proxy is True else None
 
 while True:
     try:
-        # print("fetching without username/passwords")
-        # loop B: fetch without username/passwords
         client = WeiboClient(proxies=proxy)
         h = html2text.HTML2Text()
         h.ignore_links = True
