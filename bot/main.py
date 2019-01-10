@@ -57,7 +57,6 @@ while True:
                                   username=p.name,
                                   avatar_url=p.avatar,
                                   embed=embed)
-                        convert_content(status.longTextContent)
                         # print("sent")
                     break
         # print("sleeping")
