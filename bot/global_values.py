@@ -1,8 +1,8 @@
 from bot.dataIO import fileIO
 import os
 
-if fileIO("data.json", "check"):
-    data_json = fileIO("data.json", "load")
+if fileIO("bot/data.json", "check"):
+    data_json = fileIO("bot/data.json", "load")
 else:
     data_json = {
         "Discord": {
