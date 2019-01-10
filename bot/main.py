@@ -29,8 +29,8 @@ def worth(user_id, post_id):
 
 
 def convert_content(html_content):
-    # if 'http' in html_content:
-    #     html_content = re.sub(r'(.*)(<br\s*/>.*)(<br\s*/>.*)', r'\1\n', html_content)
+    if 'http' in html_content:
+        html_content = re.sub(r'(.*)(<br\s*/>.*)(<br\s*/>.*)', r'\1\n', html_content)
     markdown_content = h.handle(html_content)
     print(markdown_content)
     return markdown_content
@@ -54,18 +54,18 @@ while True:
                         embed = None
                         if status.original_pic is not None:
                             embed = Embed(image_url=status.original_pic)
-                        # hook.send(convert_content(status.longTextContent),
-                        #           username=p.name,
-                        #           avatar_url=p.avatar,
-                        #           embed=embed)
+                        hook.send(convert_content(status.longTextContent),
+                                  username=p.name,
+                                  avatar_url=p.avatar,
+                                  embed=embed)
                         convert_content(status.longTextContent)
-                        print("sent")
+                        # print("sent")
                     break
         # print("sleeping")
         time.sleep(sleep_time)
     except (ConnectionError, requests.exceptions.ConnectionError) as e:
         print(e)
-        print("get new ip")
+        # print("get new ip")
         proxy = IPPool().get_sslproxies_ip if use_proxy is True else None
 
     except Exception as e:
