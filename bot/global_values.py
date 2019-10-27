@@ -1,6 +1,6 @@
 from bot.dataIO import fileIO
 import os
-
+# //           "5013723252",
 try:
     data_json = {
         "Discord": {
@@ -13,6 +13,5 @@ try:
 except:
     if fileIO("bot/data.json", "check"):
         data_json = fileIO("bot/data.json", "load")
-
-if data_json["Weibo"]["weibo_id"] is "" or None:
-    raise ValueError("weibo id not found")
+    else:
+        raise ValueError("error when loading global values")

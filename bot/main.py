@@ -6,11 +6,11 @@ import re
 from bot.proxy import IPPool
 import time
 import requests
-
+import os
 # init
-sleep_time = 60
+sleep_time = 5
 last_weibo_id = {}
-first_run_send = False  # False
+first_run_send = True  # False
 use_proxy = True
 
 
@@ -33,19 +33,20 @@ def convert_content(html_content):
     if 'http' in html_content:
         html_content = re.sub(r'(.*)(<br\s*/>.*)(<br\s*/>.*)', r'\1\n', html_content)
     markdown_content = h.handle(html_content)
-    # print(markdown_content)
+    print(markdown_content)
     return markdown_content
 
 
 hook = Webhook(data_json["Discord"]["webhook_url"])
 proxy = IPPool().get_sslproxies_ip if use_proxy is True else None
-
+id_pool = data_json["Weibo"]["weibo_id"][0].replace(" ", "").split(",")
 while True:
     try:
         client = WeiboClient(proxies=proxy)
         h = html2text.HTML2Text()
         h.ignore_links = True
-        for za_id in data_json["Weibo"]["weibo_id"]:
+        for za_id in id_pool:
+            print(za_id)
             p = client.people(za_id)
             for status in p.statuses.page(1):
                 if status.isTop is None:
@@ -57,13 +58,13 @@ while True:
                                   username=p.name,
                                   avatar_url=p.avatar,
                                   embed=embed)
-                        # print("sent")
+                        print("sent")
                     break
-        # print("sleeping")
+        print("sleeping")
         time.sleep(sleep_time)
     except (ConnectionError, requests.exceptions.ConnectionError) as e:
         print(e)
-        # print("get new ip")
+        print("get new ip")
         proxy = IPPool().get_sslproxies_ip if use_proxy is True else None
 
     except Exception as e:
