@@ -8,9 +8,9 @@ import time
 import requests
 import os
 # init
-sleep_time = 5
+sleep_time = 60
 last_weibo_id = {}
-first_run_send = True  # False
+first_run_send = False  # False
 use_proxy = True
 
 
