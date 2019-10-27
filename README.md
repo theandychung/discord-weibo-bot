@@ -1,6 +1,7 @@
 # Discord-Weibo-Bot
 
 ![PyPI - Python Version](https://img.shields.io/badge/python-3.7.0-blue.svg)
+![PyPI - status/down](https://img.shields.io/badge/status-down-red)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/theandychung/discord-weibo-bot)
 
