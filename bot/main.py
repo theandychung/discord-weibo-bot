@@ -33,7 +33,7 @@ def convert_content(html_content):
     if 'http' in html_content:
         html_content = re.sub(r'(.*)(<br\s*/>.*)(<br\s*/>.*)', r'\1\n', html_content)
     markdown_content = h.handle(html_content)
-    print(markdown_content)
+    #print(markdown_content)
     return markdown_content
 
 
