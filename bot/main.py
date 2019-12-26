@@ -6,7 +6,7 @@ import re
 from bot.proxy import IPPool
 import time
 import requests
-import os
+
 # init
 sleep_time = 60
 last_weibo_id = {}
